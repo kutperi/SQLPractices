@@ -24,8 +24,8 @@ AND replacement_cost =
 );
 
 -- 4. payment tablosunda en fazla sayıda alışveriş yapan müşterileri(customer) sıralayınız.
-SELECT customer.first_name, customer.last_name, COUNT(customer.customer_id) AS most_shopping FROM payment
+SELECT customer.first_name, customer.last_name, COUNT(payment.customer_id) AS most_shopping FROM payment
 INNER JOIN customer ON customer.customer_id = payment.customer_id
-GROUP BY customer.first_name, customer.last_name, customer.customer_id
+GROUP BY customer.first_name, customer.last_name, payment.customer_id
 ORDER BY most_shopping DESC;
 
